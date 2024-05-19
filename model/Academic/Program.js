@@ -15,8 +15,7 @@ const ProgramSchema = new Schema({
         type: String,
         default: "4 years"
     },
-
-    // created automatically by the system generated randomly
+    // created automatically by the system / generated randomly
     // CSFTY
     code: {
         type: String,
@@ -66,10 +65,6 @@ const ProgramSchema = new Schema({
 }
 );
 
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now
-    // }
-
-const Program = mongoose.model("Program", ProgramSchema); // convert schema into model i.e convert schema to a model
+// model
+const Program = mongoose.model("Program", ProgramSchema); // convert schema into model i.e compile our schema to a model
 module.exports = Program;
