@@ -14,7 +14,7 @@ const AcademicTermSchema = new Schema(
         },
         duration: {
             type: String,
-            required: "true"
+            default: "4 months"
         },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
