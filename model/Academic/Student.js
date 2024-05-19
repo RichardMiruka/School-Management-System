@@ -39,7 +39,7 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
             type: String,
             default: "student"
         },
-        // classes are from level 1st to 4th
+        // classes are from level 1 to 6
         // keep track of classes that are assigned to the student
         classLevels: [
             {
@@ -47,7 +47,7 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
                 ref: "ClassLevel",
                 default: [], // default value is an empty array
             },
-        ]
+        ],
         currentClassLevel: {
             type: String,
             default: function () {
@@ -69,27 +69,13 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
                 ref: "ExamResult",
                 default: [], // default value is an empty array
             },
-        ]
-        // we will push the courses that are assigned to the student here
-        courses: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Course",
-                default: [], // default value is an empty array
-            },
         ],
+        
         program: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Program",
             required: true
         },
-        examResults: [
-            {
-                type: moongose.Schema.Types.ObjectId,
-                ref: "ExamResult",
-                default: [], // default value is an empty array
-            },
-        ],
         isPromotedToLevel200: { 
             type: Boolean,
             default: false,
