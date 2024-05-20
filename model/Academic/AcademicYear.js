@@ -1,6 +1,6 @@
 const mongoose = require("mongoose"); // import mongoose
 
-// create a schema, our blueprint for documents in this collection
+// we create a schema, our blueprint for documents in this collection
 const academicYearSchema = new mongoose.Schema(
 
     {
