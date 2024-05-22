@@ -1,4 +1,6 @@
+require("dotenv").config(); // load environment variables from .env file
 const http = require("http");
+require("./config/dbConnect"); // connect to database
 const app = require("./app/app");
 
 // set up server

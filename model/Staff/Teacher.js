@@ -19,7 +19,7 @@ const teacherSchema = new mongoose.Schema({ // create a schema, our blueprint fo
     },
     teacherId: {
         type: String,
-        required: true
+        required: true,
         default: function () {
             return(
                 "TEA" +
