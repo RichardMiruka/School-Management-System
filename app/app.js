@@ -9,6 +9,10 @@ app.use(morgan("dev")); // log requests to the console
 app.use(express.json()); // parse incoming requests with JSON payloads
 
 // set up routes
+// define a route handler for the root path
+app.get("/", (req, res) => {
+    res.send("Welcome to the School Management System API");
+});
 
 // admin registration
 app.post("/api/v1/admins/register", (req, res) => {
@@ -31,7 +35,23 @@ app.post("/api/v1/admins/login", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            message: "Admin logged in successfully"
+            data : "Admin logged in successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: error.message
+        })
+    }
+    
+});
+
+//admin logout
+app.post("/api/v1/admins/logout", (req, res) => {
+    try {
+        res.status(201).json({
+            status: "success",
+            message: "Admin logged out successfully"
         })
     } catch (error) {
         res.status(400).json({
@@ -43,7 +63,7 @@ app.post("/api/v1/admins/login", (req, res) => {
 });
 
 // get all admins
-app.post("/api/v1/admins/:id", (req, res) => {
+app.get("/api/v1/admins/", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -106,22 +126,6 @@ app.delete("/api/v1/admins/:id", (req, res) => {
     
 });
 
-//admin logout
-app.post("/api/v1/admins/logout", (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Admin logged out successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-    
-});
-
 // admin suspending a teacher account
 app.put("/api/v1/admins/suspend/teacher/:id", (req, res) => {
     try {
@@ -160,6 +164,22 @@ app.put("/api/v1/admins/withdraw/teacher/:id", (req, res) => {
         res.status(201).json({
             status: "success",
             message: "Teacher account withdrawn successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: error.message
+        })
+    }
+    
+});
+
+// admin unwithdrawing a teacher account
+app.put("/api/v1/admins/unwithdraw/teacher/:id", (req, res) => {
+    try {
+        res.status(201).json({
+            status: "success",
+            message: "Teacher account unwithdrawn successfully"
         })
     } catch (error) {
         res.status(400).json({
@@ -250,10 +270,5 @@ app.delete("/api/v1/admins/delete/exam/:id", (req, res) => {
     
 });
 
-// Start the server and listen on the specified port
-const port = 3000; // specify the port to listen on
-app.listen(port, () => {
-    console.log(`Server is running on http://127.0.0.1:${port}`);
-});
 
 module.exports = app; // export app
