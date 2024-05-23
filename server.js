@@ -4,7 +4,7 @@ require("./config/dbConnect"); // connect to database
 const app = require("./app/app");
 
 // set up server
-const PORT = process.env.PORT || 5000; // set port number for our application to listen to
+const PORT = process.env.PORT || 2020; // set port number for our application to listen to
 
 // server 
 const server = http.createServer(app);

@@ -7,12 +7,12 @@ const app = express(); // create express app
 
 // set up middleware
 app.use(morgan("dev")); // log requests to the console
-app.use(express.json()); // parse incoming requests with JSON payloads
+// app.use(express.json()); // parse incoming requests with JSON payloads
 
 // set up routes
 
 // admin register
-app.post("/api/v1/admin/register", (req, res) => {
+app.post("/api/v1/admins/register", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -28,7 +28,7 @@ app.post("/api/v1/admin/register", (req, res) => {
 })
 
 // admin login
-app.post("/api/v1/admin/login", (req, res) => {
+app.post("/api/v1/admins/login", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -44,7 +44,7 @@ app.post("/api/v1/admin/login", (req, res) => {
 })
 
 // get all admins
-app.get("/api/v1/admins", (req, res) => {
+app.post("/api/v1/admins/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -75,7 +75,7 @@ app.get("/api/v1/admin/:id", (req, res) => {
     
 })
 // update admin
-app.patch("/api/v1/admin/:id", (req, res) => {
+app.put("/api/v1/admin/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
