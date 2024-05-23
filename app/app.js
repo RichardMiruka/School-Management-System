@@ -1,5 +1,4 @@
 const express = require("express");    // import express
-const mongoose = require("mongoose");  // import mongoose
 const morgan = require("morgan");      // import morgan
 
 // call express and assign it to a variable called app
@@ -7,25 +6,25 @@ const app = express(); // create express app
 
 // set up middleware
 app.use(morgan("dev")); // log requests to the console
-// app.use(express.json()); // parse incoming requests with JSON payloads
+app.use(express.json()); // parse incoming requests with JSON payloads
 
 // set up routes
 
-// admin register
+// admin registration
 app.post("/api/v1/admins/register", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            message: "Admin registered successfully"
+            data: "Admin registered successfully"
         })
     } catch (error) {
         res.status(400).json({
             status: "failed",
-            message: error.message
+            error: error.message
         })
     }
     
-})
+});
 
 // admin login
 app.post("/api/v1/admins/login", (req, res) => {
@@ -41,7 +40,7 @@ app.post("/api/v1/admins/login", (req, res) => {
         })
     }
     
-})
+});
 
 // get all admins
 app.post("/api/v1/admins/:id", (req, res) => {
@@ -57,10 +56,10 @@ app.post("/api/v1/admins/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // get single admin
-app.get("/api/v1/admin/:id", (req, res) => {
+app.get("/api/v1/admins/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -73,9 +72,10 @@ app.get("/api/v1/admin/:id", (req, res) => {
         })
     }
     
-})
+});
+
 // update admin
-app.put("/api/v1/admin/:id", (req, res) => {
+app.put("/api/v1/admins/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -88,10 +88,10 @@ app.put("/api/v1/admin/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // delete admin
-app.delete("/api/v1/admin/:id", (req, res) => {
+app.delete("/api/v1/admins/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -104,10 +104,10 @@ app.delete("/api/v1/admin/:id", (req, res) => {
         })
     }
     
-})
+});
 
 //admin logout
-app.post("/api/v1/admin/logout", (req, res) => {
+app.post("/api/v1/admins/logout", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -120,10 +120,10 @@ app.post("/api/v1/admin/logout", (req, res) => {
         })
     }
     
-})
+});
 
 // admin suspending a teacher account
-app.put("/api/v1/admin/suspend/teacher/:id", (req, res) => {
+app.put("/api/v1/admins/suspend/teacher/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -136,10 +136,10 @@ app.put("/api/v1/admin/suspend/teacher/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // admin unsuspending a teacher account
-app.put("/api/v1/admin/unsuspend/teacher/:id", (req, res) => {
+app.put("/api/v1/admins/unsuspend/teacher/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -152,10 +152,10 @@ app.put("/api/v1/admin/unsuspend/teacher/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // admin withdrawing a teacher account
-app.put("/api/v1/admin/withdraw/teacher/:id", (req, res) => {
+app.put("/api/v1/admins/withdraw/teacher/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -168,10 +168,10 @@ app.put("/api/v1/admin/withdraw/teacher/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // admin approving a teacher account
-app.put("/api/v1/admin/approve/teacher/:id", (req, res) => {
+app.put("/api/v1/admins/approve/teacher/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -184,10 +184,10 @@ app.put("/api/v1/admin/approve/teacher/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // admin rejecting a teacher account
-app.put("/api/v1/admin/reject/teacher/:id", (req, res) => {
+app.put("/api/v1/admins/reject/teacher/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -200,9 +200,10 @@ app.put("/api/v1/admin/reject/teacher/:id", (req, res) => {
         })
     }
     
-})
+});
+
 // admin publishing exam results
-app.put("/api/v1/admin/publish/exam/:id", (req, res) => {
+app.put("/api/v1/admins/publish/exam/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -215,10 +216,10 @@ app.put("/api/v1/admin/publish/exam/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // admin un-publishing exam results
-app.put("/api/v1/admin/unpublish/exam/:id", (req, res) => {
+app.put("/api/v1/admins/unpublish/exam/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -231,10 +232,10 @@ app.put("/api/v1/admin/unpublish/exam/:id", (req, res) => {
         })
     }
     
-})
+});
 
 // admin deleting exam results
-app.delete("/api/v1/admin/delete/exam/:id", (req, res) => {
+app.delete("/api/v1/admins/delete/exam/:id", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -247,6 +248,12 @@ app.delete("/api/v1/admin/delete/exam/:id", (req, res) => {
         })
     }
     
-})
+});
+
+// Start the server and listen on the specified port
+const port = 3000; // specify the port to listen on
+app.listen(port, () => {
+    console.log(`Server is running on http://127.0.0.1:${port}`);
+});
 
 module.exports = app; // export app
