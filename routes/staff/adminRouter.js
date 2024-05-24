@@ -16,4 +16,18 @@ adminRouter.post("/register", (req, res) => {
     }
 });
 
+adminRouter.post("/login", (req, res) => {
+    try {
+        res.status(201).json({
+            status: "success",
+            message: "Admin logged in successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: error.message
+        })
+    }
+});
+
 module.exports = adminRouter;
