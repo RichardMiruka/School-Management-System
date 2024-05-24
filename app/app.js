@@ -1,6 +1,6 @@
 const express = require("express");    // import express
 const morgan = require("morgan");      // import morgan
-const adminRouter = require("./routes/staff/adminRouter"); // import admin router
+const adminRouter = require("../routes/staff/adminRouter"); // import admin router
 
 // call express and assign it to a variable called app
 const app = express(); // create express app
@@ -16,20 +16,21 @@ app.get("/", (req, res) => {
 });
 
 // admin registration
-app.post("/api/v1/admins/register", (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            data: "Admin registered successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            error: error.message
-        })
-    }
+app.use("/api/v1/admins/register", adminRouter);
+// app.post("/api/v1/admins/register", (req, res) => {
+//     try {
+//         res.status(201).json({
+//             status: "success",
+//             data: "Admin registered successfully"
+//         })
+//     } catch (error) {
+//         res.status(400).json({
+//             status: "failed",
+//             error: error.message
+//         })
+//     }
     
-});
+// });
 
 // admin login
 app.post("/api/v1/admins/login", (req, res) => {
