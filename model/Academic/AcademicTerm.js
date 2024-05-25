@@ -28,4 +28,5 @@ const AcademicTermSchema = new Schema(
 );
 
 const AcademicTerm = mongoose.model("AcademicTerm", AcademicTermSchema);
+
 module.exports = AcademicTerm;
