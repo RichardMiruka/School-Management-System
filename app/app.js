@@ -1,5 +1,7 @@
 const express = require("express");    // import express
+
 const morgan = require("morgan");      // import morgan
+
 const adminRouter = require("../routes/staff/adminRouter"); // import admin router
 
 // call express and assign it to a variable called app
