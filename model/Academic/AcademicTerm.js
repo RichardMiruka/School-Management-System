@@ -1,5 +1,4 @@
 const mongoose = require("mongoose"); // import mongoose
-
 const { Schema } = mongoose;
 
 const AcademicTermSchema = new Schema(
