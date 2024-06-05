@@ -1,6 +1,9 @@
 const express = require("express");
+const app = require("../../app/app");
+const {registerAdmCtrlCtrl} = require("../../controller/staff/adminCtrl"); // import admin controller
 
 const adminRouter = express.Router();
+
 
 // admin registration
 adminRouter.post("/register", 
