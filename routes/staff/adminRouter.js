@@ -7,7 +7,7 @@ adminRouter.post("/register", (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            message: "Admin registered successfully"
+            message: "Admin has been registered successfully"
         })
     } catch (error) {
         res.status(400).json({
