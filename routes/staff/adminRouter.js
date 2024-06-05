@@ -3,20 +3,7 @@ const express = require("express");
 const adminRouter = express.Router();
 
 // admin registration
-adminRouter.post("/register", (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Admin has been registered successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-});
-
+adminRouter.post("/register", 
 // admin login
 adminRouter.post("/login", (req, res) => {
     try {
