@@ -1,20 +1,36 @@
+const Admin = require("../../model/Staff/Admin"); // importing the Admin model
+
 // our controller is a normal function
 // it is an anonymous function in javascript - a function without a name
 
 // @desc    Register admin
 // @route   POST /api/v1/admins/register
 // @access  Private
-exports.registerAdmCtrl = (req, res) => {
+exports.registerAdmCtrl = async (req, res) => {
+    const { name, email, password } = req.body;
     try {
+        // check if email already exists
+        const adminFound = await Admin.findOne({ email });
+        if (adminFound) {
+           res.json("Admin already exists");
+        };
+            
+        // create admin
+        const user = await Admin.create({ 
+            name,
+            name,
+            email,
+            password,
+ });
         res.status(201).json({
             status: "success",
             message: "Admin has been registered successfully"
         })
     } catch (error) {
-        res.status(400).json({
+        res.json({
             status: "failed",
             message: error.message
-        })
+        });
     }
 };
 
@@ -31,7 +47,7 @@ exports.loginAdminCtrl = (req, res) => {
         res.status(400).json({
             status: "failed",
             message: error.message
-        })
+        });
     }
 };
 
@@ -48,7 +64,7 @@ exports.getAdminsCtrl = (req, res) => {
         res.status(400).json({
             status: "failed",
             message: error.message
-        })
+        });
     }
 };
 
