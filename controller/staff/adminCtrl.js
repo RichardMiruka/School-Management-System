@@ -38,7 +38,7 @@ exports.loginAdminCtrl = (req, res) => {
 // @desc    Get all admins
 // @route   GET /api/v1/admins
 // @access  Private
-exports.getAllAdminsCtrl = (req, res) => {
+exports.getAdminsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -55,7 +55,7 @@ exports.getAllAdminsCtrl = (req, res) => {
 // @desc    Get single admin
 // @route   GET /api/v1/admins/:id
 // @access  Private
-exports.getSingleAdminCtrl = (req, res) => {
+exports.getAdminCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -106,7 +106,7 @@ exports.deleteAdminCtrl = (req, res) => {
 // @desc    Admin suspending a teacher account
 // @route   PUT /api/v1/admins/teacher/:id
 // @access  Private
-exports.suspendTeacherCtrl = (req, res) => {
+exports.adminSuspendTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -120,10 +120,10 @@ exports.suspendTeacherCtrl = (req, res) => {
     }
 };
 
-// @desc    Admin unwithdrawing a teacher account
+// @desc    Admin unsuspending a teacher account
 // @route   PUT /api/v1/admins/teacher/:id
 // @access  Private
-exports.unsuspendTeacherCtrl = (req, res) => {
+exports.adminUnsuspendTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -140,7 +140,7 @@ exports.unsuspendTeacherCtrl = (req, res) => {
 // @desc    Admin withdrawing a teacher account
 // @route   PUT /api/v1/admins/teacher/:id
 // @access  Private
-exports.withdrawTeacherCtrl = (req, res) => {
+exports.adminWithdrawTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -157,7 +157,7 @@ exports.withdrawTeacherCtrl = (req, res) => {
 // @desc    Admin unwithdrawing a teacher account
 // @route   PUT /api/v1/admins/teacher/:id
 // @access  Private
-exports.unwithdrawTeacherCtrl = (req, res) => {
+exports.adminUnwithdrawTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -174,7 +174,7 @@ exports.unwithdrawTeacherCtrl = (req, res) => {
 // @desc    Admin updating a teacher account
 // @route   PUT /api/v1/admins/teacher/:id
 // @access  Private
-exports.updateTeacherCtrl = (req, res) => {
+exports.adminUpdateTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -191,7 +191,7 @@ exports.updateTeacherCtrl = (req, res) => {
 // @desc    Admin deleting a teacher account
 // @route   PUT /api/v1/admins/teacher/:id
 // @access  Private
-exports.deleteTeacherCtrl = (req, res) => {
+exports.adminDeleteTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -208,7 +208,7 @@ exports.deleteTeacherCtrl = (req, res) => {
 // @desc    Admin suspending a student account
 // @route   PUT /api/v1/admins/student/:id
 // @access  Private
-exports.suspendStudentCtrl = (req, res) => {
+exports.adminSuspendStudentCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -225,7 +225,7 @@ exports.suspendStudentCtrl = (req, res) => {
 // @desc    Admin unwithdrawing a student account
 // @route   PUT /api/v1/admins/student/:id
 // @access  Private
-exports.unsuspendStudentCtrl = (req, res) => {
+exports.adminUnsuspendStudentCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -242,7 +242,7 @@ exports.unsuspendStudentCtrl = (req, res) => {
 // @desc    Admin withdrawing a student account
 // @route   PUT /api/v1/admins/student/:id
 // @access  Private
-exports.withdrawStudentCtrl = (req, res) => {
+exports.adminWithdrawStudentCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -259,7 +259,7 @@ exports.withdrawStudentCtrl = (req, res) => {
 // @desc    Admin unwithdrawing a student account
 // @route   PUT /api/v1/admins/student/:id
 // @access  Private
-exports.unwithdrawStudentCtrl = (req, res) => {
+exports.adminUnwithdrawStudentCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -276,7 +276,7 @@ exports.unwithdrawStudentCtrl = (req, res) => {
 // @desc    Admin updating a student account
 // @route   PUT /api/v1/admins/student/:id
 // @access  Private
-exports.updateStudentCtrl = (req, res) => {
+exports.adminUpdateStudentCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -293,7 +293,7 @@ exports.updateStudentCtrl = (req, res) => {
 // @desc    Admin deleting a student account
 // @route   PUT /api/v1/admins/student/:id
 // @access  Private
-exports.deleteStudentCtrl = (req, res) => {
+exports.adminDeleteStudentCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -310,7 +310,7 @@ exports.deleteStudentCtrl = (req, res) => {
 // @desc Admin publishing exam results
 // @route PUT /api/v1/admins/exam/:id
 // @access Private
-exports.publishExamCtrl = (req, res) => {
+exports.adminPublishResultsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -327,7 +327,7 @@ exports.publishExamCtrl = (req, res) => {
 // @desc Admin unpublishing exam results
 // @route PUT /api/v1/admins/exam/:id
 // @access Private
-exports.unpublishExamCtrl = (req, res) => {
+exports.adminUnpublishResultsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
@@ -344,7 +344,7 @@ exports.unpublishExamCtrl = (req, res) => {
 // @desc Admin deleting exam results
 // @route DELETE /api/v1/admins/exam/:id
 // @access Private
-exports.deleteExamCtrl = (req, res) => {
+exports.adminDeleteresultsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
