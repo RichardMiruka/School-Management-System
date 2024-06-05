@@ -205,107 +205,6 @@ exports.adminDeleteTeacherCtrl = (req, res) => {
     }
 };
 
-// @desc    Admin suspending a student account
-// @route   PUT /api/v1/admins/student/:id
-// @access  Private
-exports.adminSuspendStudentCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Student account suspended successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
-
-// @desc    Admin unwithdrawing a student account
-// @route   PUT /api/v1/admins/student/:id
-// @access  Private
-exports.adminUnsuspendStudentCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Student account unsuspended successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
-
-// @desc    Admin withdrawing a student account
-// @route   PUT /api/v1/admins/student/:id
-// @access  Private
-exports.adminWithdrawStudentCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Student account withdrawn successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
-
-// @desc    Admin unwithdrawing a student account
-// @route   PUT /api/v1/admins/student/:id
-// @access  Private
-exports.adminUnwithdrawStudentCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Student account unwithdrawn successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
-
-// @desc    Admin updating a student account
-// @route   PUT /api/v1/admins/student/:id
-// @access  Private
-exports.adminUpdateStudentCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Student account updated successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
-
-// @desc    Admin deleting a student account
-// @route   PUT /api/v1/admins/student/:id
-// @access  Private
-exports.adminDeleteStudentCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Student account deleted successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
 
 // @desc Admin publishing exam results
 // @route PUT /api/v1/admins/exam/:id
@@ -344,7 +243,7 @@ exports.adminUnpublishResultsCtrl = (req, res) => {
 // @desc Admin deleting exam results
 // @route DELETE /api/v1/admins/exam/:id
 // @access Private
-exports.adminDeleteresultsCtrl = (req, res) => {
+exports.adminDeleteResultsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
