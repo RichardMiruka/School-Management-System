@@ -52,7 +52,4 @@ adminRouter.put("/publish/exam/:id", adminPublishResultsCtrl);
 // admin unpublishing exam results
 adminRouter.put("/unpublish/exam/:id", adminUnpublishResultsCtrl);
 
-// admin deleting exam results
-adminRouter.delete("/delete/exam/:id", adminDeleteResultsCtrl);
-
 module.exports = adminRouter;

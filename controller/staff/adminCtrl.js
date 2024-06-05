@@ -239,21 +239,3 @@ exports.adminUnpublishResultsCtrl = (req, res) => {
         })
     }
 };
-
-// @desc Admin deleting exam results
-// @route DELETE /api/v1/admins/exam/:id
-// @access Private
-exports.adminDeleteResultsCtrl = (req, res) => {
-    try {
-        res.status(201).json({
-            status: "success",
-            message: "Exam results deleted successfully"
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            message: error.message
-        })
-    }
-};
-
