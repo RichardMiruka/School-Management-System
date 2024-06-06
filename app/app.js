@@ -1,23 +1,45 @@
-const express = require("express");    // import express
+const express = require("express");
+const adminRouter = require("../routes/staff/adminRouter");
 
-const morgan = require("morgan");      // import morgan
+const app = express();
 
-const adminRouter = require("../routes/staff/adminRouter"); // import admin router
+//Middlewares
+app.use(express.json()); //pass incoming json data
 
-// call express and assign it to a variable called app
-const app = express(); // create express app
-
-// set up middleware
-app.use(morgan("dev")); // log requests to the console
-app.use(express.json()); // parse incoming requests with JSON payloads
-
-// set up routes
-// define a route handler for the root path
-app.get("/", (req, res) => {
-    res.send("Welcome to the School Management System API");
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.originalUrl}`);
+    next();
 });
 
-// admin registration
-app.use("/api/v1/admins/register", adminRouter);
+let user = {
+    name: "John Does",
+    isAdmin: false,
+    isLogin: true,
+};
 
-module.exports = app; // export app module  
+const isLogin = (req, res, next) => {
+    if (user.isLogin) {
+        next();
+    } else {
+        res.status(401).json({
+            msg: "Unauthorized",
+        });
+    }
+};
+
+const isAdmin = (req, res, next) => {
+    if (user.isAdmin) {
+        next();
+    } else {
+        res.status(401).json({
+            msg: "Unauthorized, you are not admin",
+        });
+    }
+};
+
+app.use(isLogin, isAdmin);
+//Routes
+//admin register
+app.use("/api/v1/admins", adminRouter);
+
+module.exports = app;
