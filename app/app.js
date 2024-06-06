@@ -12,12 +12,8 @@ app.use(morgan("dev")); // log requests to the console
 app.use(express.json()); // parse incoming requests with JSON payloads
 
 // set up routes
-// define a route handler for the root path
-app.get("/", (req, res) => {
-    res.send("Welcome to the School Management System API");
-});
 
 // admin registration
-app.use("/api/v1/admins/register", adminRouter);
+app.use("/api/v1/admins", adminRouter);
 
 module.exports = app; // export app module  

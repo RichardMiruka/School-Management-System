@@ -1,21 +1,20 @@
 const express = require("express");
-const app = require("../../app/app");
-const {registerAdmCtrl, 
+const {
+    registerAdmCtrl,
     loginAdminCtrl,
-    getAdminsCtrl, 
-    getAdminCtrl, 
+    getAdminsCtrl,
+    getAdminCtrl,
     updateAdminCtrl,
     deleteAdminCtrl,
-    adminSuspendTeacherCtrl, 
-    adminUnsuspendTeacherCtrl, 
-    adminWithdrawTeacherCtrl, 
-    adminUnwithdrawTeacherCtrl, 
-    adminPublishResultsCtrl, 
+    adminSuspendTeacherCtrl,
+    adminUnsuspendTeacherCtrl,
+    adminWithdrawTeacherCtrl,
+    adminUnwithdrawTeacherCtrl,
+    adminPublishResultsCtrl,
     adminUnpublishResultsCtrl,
- } = require("../../controller/staff/adminCtrl"); // import admin controller
+} = require("../../controller/staff/adminCtrl"); // import admin controller
 
 const adminRouter = express.Router();
-
 
 // admin registration
 adminRouter.post("/register", registerAdmCtrl);
@@ -46,6 +45,7 @@ adminRouter.put("/withdraw/teacher/:id", adminWithdrawTeacherCtrl);
 
 // admin unwithdrawing a teacher account
 adminRouter.put("/unwithdraw/teacher/:id", adminUnwithdrawTeacherCtrl);
+
 // admin publishing exam results
 adminRouter.put("/publish/exam/:id", adminPublishResultsCtrl);
 
