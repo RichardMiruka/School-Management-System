@@ -1,30 +1,31 @@
-const mongoose = require("mongoose"); // import mongoose
+const mongoose = require("mongoose");
+
 const { Schema } = mongoose;
-const AcademicTermSchema = new Schema(
+
+const academicTermSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: true,
         },
         description: {
             type: String,
-            required: true
+            required: true,
         },
         duration: {
             type: String,
-            default: "4 months"
+            required: true,
+            default: "3 months",
         },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Admin",
-            required: true
-        }
+            required: true,
+        },
     },
-    {
-        timestamps: true
-    }
+    { timestamps: true }
 );
 
-const AcademicTerm = mongoose.model("AcademicTerm", AcademicTermSchema);
+const AcademicTerm = mongoose.model("AcademicTerm", academicTermSchema);
 
 module.exports = AcademicTerm;
