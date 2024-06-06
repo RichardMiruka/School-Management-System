@@ -2,6 +2,8 @@ const AsyncHandler = require("express-async-handler");
 
 const Admin = require("../../model/Staff/Admin");
 
+const generateToken = require("../../utils/generateToken");
+
 //@desc Register admin
 //@route POST /api/admins/register
 //@acess  Private
