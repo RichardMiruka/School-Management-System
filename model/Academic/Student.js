@@ -1,7 +1,7 @@
-const moongose = require("mongoose"); // import mongoose
-const { SiMongoose } = require("react-icons/si");
-const studentSchema = new moongose.Schema( // create a schema, our blueprint for documents in this collection
+const mongoose = require("mongoose"); // import mongoose
+const { Schema } = mongoose; // import Schema from mongoose
 
+const studentSchema = new mongoose.Schema( // create a schema, our blueprint for documents in this collection
     {
         name: {
             type: String,
@@ -19,15 +19,15 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
             type: String,
             required: true,
             default: function () {
-                return(
+                return (
                     "STU" +
                     Math.floor(Math.random() * 900) +
                     Date.now().toString().slice(2, 4) +
                     this.name
-                    .split(" ")
-                    .map(name => name[0])
-                    .join("")
-                    .toUpperCase()
+                        .split(" ")
+                        .map(name => name[0])
+                        .join("")
+                        .toUpperCase()
                 );
             },
         },
@@ -55,7 +55,7 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
             }
         },
         academicYear: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "AcademicYear",
             required: true,
         },
@@ -65,38 +65,38 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
         },
         examResults: [
             {
-                type: moongose.Schema.Types.ObjectId,
+                type: Schema.Types.ObjectId,
                 ref: "ExamResult",
                 default: [], // default value is an empty array
             },
         ],
-        
+
         program: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "Program",
             required: true
         },
-        isPromotedToLevel200: { 
+        isPromotedToLevel200: {
             type: Boolean,
             default: false,
         },
-        isPromotedToLevel300: { 
+        isPromotedToLevel300: {
             type: Boolean,
             default: false,
         },
-        isPromotedToLevel400: { 
+        isPromotedToLevel400: {
             type: Boolean,
             default: false,
         },
-        isGraduated: { 
+        isGraduated: {
             type: Boolean,
             default: false,
         },
-        isWithdrawn: { 
+        isWithdrawn: {
             type: Boolean,
             default: false,
         },
-        isSuspended: { 
+        isSuspended: {
             type: Boolean,
             default: false,
         },
@@ -113,5 +113,5 @@ const studentSchema = new moongose.Schema( // create a schema, our blueprint for
 );
 
 // model
-const Student = moongose.model("Student", studentSchema);
+const Student = mongoose.model("Student", studentSchema);
 module.exports = Student; // export the model
