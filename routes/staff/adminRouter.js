@@ -13,6 +13,7 @@ const {
     loginAdminCtrl,
     updateAdminCtrl,
 } = require("../../controller/staff/adminCtrl");
+const isAdmin = require("../../middlewares/isAdmin");
 const isLogin = require("../../middlewares/isLogin");
 
 const adminRouter = express.Router();
@@ -24,17 +25,17 @@ adminRouter.post("/register", registerAdmCtrl);
 adminRouter.post("/login", loginAdminCtrl);
 
 //get all
-adminRouter.get("/", getAdminsCtrl);
+adminRouter.get("/", isLogin, getAdminsCtrl);
 
 //single
 
-adminRouter.get("/profile", isLogin, getAdminProfileCtrl);
+adminRouter.get("/profile", isLogin, isAdmin, getAdminProfileCtrl);
 
 //update
-adminRouter.put("/:id", deleteAdminCtrl);
+adminRouter.put("/", isLogin, isAdmin, updateAdminCtrl);
 
 //delete
-adminRouter.delete("/:id", updateAdminCtrl);
+adminRouter.delete("/:id", deleteAdminCtrl);
 
 //suspend
 adminRouter.put("/suspend/teacher/:id", adminSuspendTeacherCtrl);
@@ -55,4 +56,3 @@ adminRouter.put("/publish/exam/:id", adminPublishResultsCtrl);
 adminRouter.put("/unpublish/exam/:id", adminUnPublishResultsCtrl);
 
 module.exports = adminRouter;
-
