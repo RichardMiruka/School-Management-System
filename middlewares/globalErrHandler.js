@@ -2,6 +2,7 @@ const globalErrHandler = (err, req, res, next) => {
     //status
     //message
     //stack
+    
     const stack = err.stack;
     const message = err.message;
     const status = err.status ? err.status : "failed";
