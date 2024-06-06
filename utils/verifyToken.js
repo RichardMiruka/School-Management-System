@@ -1,6 +1,6 @@
+// Enable JWT token validation with basic secret key verification.
 const jwt = require("jsonwebtoken");
 
-//verify token
 const verifyToken = token => {
     return jwt.verify(token, "anykey", (err, decoded) => {
         if (err) {
