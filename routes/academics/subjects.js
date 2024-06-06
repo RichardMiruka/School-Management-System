@@ -1,3 +1,5 @@
+// Implementing protected API routes for managing Subjects:
+// Secured with isLogin and isAdmin middleware.
 const express = require("express");
 const {
     createSubject,
