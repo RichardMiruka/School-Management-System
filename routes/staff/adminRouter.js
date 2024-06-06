@@ -1,57 +1,55 @@
 const express = require("express");
 const app = require("../../app/app");
-const {
-    registerAdmCtrl,
-    adminPublishResultsCtrl,
-    adminSuspendTeacherCtrl,
-    adminUnPublishResultsCtrl,
-    adminUnSuspendTeacherCtrl,
-    adminUnWithdrawTeacherCtrl,
-    adminWithdrawTeacherCtrl,
-    deleteAdminCtrl,
-    getAdminCtrl,
-    getAdminsCtrl,
+const {registerAdmCtrl, 
     loginAdminCtrl,
+    getAdminsCtrl, 
+    getAdminCtrl, 
     updateAdminCtrl,
-} = require("../../controller/staff/adminCtrl");
+    deleteAdminCtrl,
+    adminSuspendTeacherCtrl, 
+    adminUnsuspendTeacherCtrl, 
+    adminWithdrawTeacherCtrl, 
+    adminUnwithdrawTeacherCtrl, 
+    adminPublishResultsCtrl, 
+    adminUnpublishResultsCtrl,
+ } = require("../../controller/staff/adminCtrl"); // import admin controller
 
 const adminRouter = express.Router();
 
-//register
+
+// admin registration
 adminRouter.post("/register", registerAdmCtrl);
 
-//login
+// admin login
 adminRouter.post("/login", loginAdminCtrl);
 
-//get all
+// get all admins
 adminRouter.get("/", getAdminsCtrl);
 
-//single
-
+// get single admin
 adminRouter.get("/:id", getAdminCtrl);
 
-//update
-adminRouter.put("/:id", deleteAdminCtrl);
+// update admin
+adminRouter.put("/:id", updateAdminCtrl);
 
-//delete
-adminRouter.delete("/:id", updateAdminCtrl);
+// delete admin
+adminRouter.delete("/:id", deleteAdminCtrl);
 
-//suspend
+// admin suspending a teacher account
 adminRouter.put("/suspend/teacher/:id", adminSuspendTeacherCtrl);
 
-//unsuspend
-adminRouter.put("/unsuspend/teacher/:id", adminUnSuspendTeacherCtrl);
+// admin unsuspending a teacher account
+adminRouter.put("/unsuspend/teacher/:id", adminUnsuspendTeacherCtrl);
 
-//withdraw
+// admin withdrawing a teacher account
 adminRouter.put("/withdraw/teacher/:id", adminWithdrawTeacherCtrl);
 
-//unwithdraw
-adminRouter.put("/unwithdraw/teacher/:id", adminUnWithdrawTeacherCtrl);
-
-//publish exams
+// admin unwithdrawing a teacher account
+adminRouter.put("/unwithdraw/teacher/:id", adminUnwithdrawTeacherCtrl);
+// admin publishing exam results
 adminRouter.put("/publish/exam/:id", adminPublishResultsCtrl);
 
-//unpublish exams results
-adminRouter.put("/unpublish/exam/:id", adminUnPublishResultsCtrl);
+// admin unpublishing exam results
+adminRouter.put("/unpublish/exam/:id", adminUnpublishResultsCtrl);
 
 module.exports = adminRouter;

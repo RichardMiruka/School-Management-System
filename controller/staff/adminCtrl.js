@@ -1,214 +1,257 @@
-const Admin = require("../../model/Staff/Admin");
+const Admin = require("../../model/Staff/Admin"); // importing the Admin model
 
-//@desc Register admin
-//@route POST /api/admins/register
-//@acess  Private
+// our controller is a normal function
+// it is an anonymous function in javascript - a function without a name
+
+// @desc    Register admin
+// @route   POST /api/v1/admins/register
+// @access  Private
 exports.registerAdmCtrl = async (req, res) => {
     const { name, email, password } = req.body;
     try {
-        //Check if email exists
+        // check if email already exists
         const adminFound = await Admin.findOne({ email });
-        // if (adminFound) {
-        //   res.json("Admin Exists");
-        // }
-        //register
-        const user = await Admin.create({
+        if (adminFound) {
+           res.json("Admin already exists");
+        };
+            
+        // create admin
+        const user = await Admin.create({ 
+            name,
             name,
             email,
             password,
-        });
+ });
         res.status(201).json({
             status: "success",
-            data: user,
-        });
+            message: "Admin has been registered successfully"
+        })
     } catch (error) {
         res.json({
             status: "failed",
-            error: error.message,
+            message: error.message
         });
     }
 };
 
-//@desc     login admins
-//@route    POST /api/v1/admins/login
-//@access   Private
+// @desc    Login admin
+// @route   POST /api/v1/admins/login
+// @access  Private
 exports.loginAdminCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: "Admin has been login",
-        });
+            message: "Admin logged in successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
+            message: error.message
         });
     }
 };
 
-//@desc     Get all admins
-//@route    GET /api/v1/admins
-//@access   Private
-
+// @desc    Get all admins
+// @route   GET /api/v1/admins
+// @access  Private
 exports.getAdminsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: "All admins",
-        });
+            message: "All admins fetched successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
+            message: error.message
         });
     }
 };
-//@desc     Get single admin
-//@route    GET /api/v1/admins/:id
-//@access   Private
 
+// @desc    Get single admin
+// @route   GET /api/v1/admins/:id
+// @access  Private
 exports.getAdminCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: "single admin",
-        });
+            message: "Single admin fetched successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
-//@desc    update admin
-//@route    UPDATE /api/v1/admins/:id
-//@access   Private
+
+// @desc    Update admin
+// @route   PUT /api/v1/admins/:id
+// @access  Private
 exports.updateAdminCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: "update admin",
-        });
+            message: "Admin updated successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
 
-//@desc     Delete admin
-//@route    DELETE /api/v1/admins/:id
-//@access   Private
+// @desc    Delete admin
+// @route   DELETE /api/v1/admins/:id
+// @access  Private
 exports.deleteAdminCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: "delete admin",
-        });
+            message: "Admin deleted successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
 
-//@desc     admin suspends a teacher
-//@route    PUT /api/v1/admins/suspend/teacher/:id
-//@access   Private
-
+// @desc    Admin suspending a teacher account
+// @route   PUT /api/v1/admins/teacher/:id
+// @access  Private
 exports.adminSuspendTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: " admin suspend teacher",
-        });
+            message: "Teacher account suspended successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
-//@desc     admin unsuspends a teacher
-//@route    PUT /api/v1/admins/unsuspend/teacher/:id
-//@access   Private
-exports.adminUnSuspendTeacherCtrl = (req, res) => {
+
+// @desc    Admin unsuspending a teacher account
+// @route   PUT /api/v1/admins/teacher/:id
+// @access  Private
+exports.adminUnsuspendTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: " admin Unsuspend teacher",
-        });
+            message: "Teacher account unsuspended successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
-//@desc     admin withdraws a teacher
-//@route    PUT /api/v1/admins/withdraw/teacher/:id
-//@access   Private
+
+// @desc    Admin withdrawing a teacher account
+// @route   PUT /api/v1/admins/teacher/:id
+// @access  Private
 exports.adminWithdrawTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: " admin withdraw teacher",
-        });
+            message: "Teacher account withdrawn successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
-//@desc     admin Unwithdraws a teacher
-//@route    PUT /api/v1/admins/withdraw/teacher/:id
-//@access   Private
-exports.adminUnWithdrawTeacherCtrl = (req, res) => {
+
+// @desc    Admin unwithdrawing a teacher account
+// @route   PUT /api/v1/admins/teacher/:id
+// @access  Private
+exports.adminUnwithdrawTeacherCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: " admin Unwithdraw teacher",
-        });
+            message: "Teacher account unwithdrawn successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
-//@desc     admin publich exam result
-//@route    PUT /api/v1/admins/publish/exam/:id
-//@access   Private
+
+// @desc    Admin updating a teacher account
+// @route   PUT /api/v1/admins/teacher/:id
+// @access  Private
+exports.adminUpdateTeacherCtrl = (req, res) => {
+    try {
+        res.status(201).json({
+            status: "success",
+            message: "Teacher account updated successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: error.message
+        })
+    }
+};
+
+// @desc    Admin deleting a teacher account
+// @route   PUT /api/v1/admins/teacher/:id
+// @access  Private
+exports.adminDeleteTeacherCtrl = (req, res) => {
+    try {
+        res.status(201).json({
+            status: "success",
+            message: "Teacher account deleted successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: error.message
+        })
+    }
+};
+
+
+// @desc Admin publishing exam results
+// @route PUT /api/v1/admins/exam/:id
+// @access Private
 exports.adminPublishResultsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: " admin publish exam",
-        });
+            message: "Exam results published successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };
 
-//@desc     admin unpublish exam result
-//@route    PUT /api/v1/admins/unpublish/exam/:id
-//@access   Private
-exports.adminUnPublishResultsCtrl = (req, res) => {
+// @desc Admin unpublishing exam results
+// @route PUT /api/v1/admins/exam/:id
+// @access Private
+exports.adminUnpublishResultsCtrl = (req, res) => {
     try {
         res.status(201).json({
             status: "success",
-            data: " admin unpublish exam",
-        });
+            message: "Exam results unpublished successfully"
+        })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             status: "failed",
-            error: error.message,
-        });
+            message: error.message
+        })
     }
 };

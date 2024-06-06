@@ -1,42 +1,29 @@
-const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose"); // import mongoose
+const adminSchema = new mongoose.Schema({ // create a schema, our blueprint for documents in this collection
 
-const mongoose = require("mongoose");
-const adminSchema = new mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-        },
-        email: {
-            type: String,
-            required: true,
-        },
-        password: {
-            type: String,
-            required: true,
-        },
-        role: {
-            type: String,
-            default: "admin",
-        },
+    name: {
+        type: String,
+        required: true
     },
-    {
-        timestamps: true,
-    }
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        default: "admin"
+    },
+
+}, {
+    timestamps: true
+}
 );
 
-//Hash password
-adminSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) {
-        next();
-    }
-    //salt
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-});
-
-//model
+// model
 const Admin = mongoose.model("Admin", adminSchema);
-
 module.exports = Admin;
+
