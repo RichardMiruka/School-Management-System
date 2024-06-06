@@ -1,3 +1,6 @@
+// Define Admin user schema with name, email, hashed password (using bcrypt), 
+// role (default: admin), and references to related models 
+// (AcademicTerm, Program, YearGroup, AcademicYear, ClassLevel, Teacher, Student).
 const bcrypt = require("bcryptjs");
 
 const mongoose = require("mongoose");
