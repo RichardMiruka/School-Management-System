@@ -31,7 +31,8 @@ app.use("/api/v1/teachers", teachersRouter);
 app.use("/api/v1/exams", examRouter);
 app.use("/api/v1/students", studentRouter);
 app.use("/api/v1/questions", questionsRouter);
-//Error middlewares
+
+//Error handling middlewares
 app.use(notFoundErr);
 app.use(globalErrHandler);
 
