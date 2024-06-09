@@ -2,7 +2,6 @@ const globalErrHandler = (err, req, res, next) => {
     //status
     //message
     //stack
-    
     const stack = err.stack;
     const message = err.message;
     const status = err.status ? err.status : "failed";
@@ -14,7 +13,7 @@ const globalErrHandler = (err, req, res, next) => {
     });
 };
 
-//Not found error
+//Not found
 const notFoundErr = (req, res, next) => {
     const err = new Error(`Can't find ${req.originalUrl} on the server`);
     next(err);
