@@ -20,15 +20,6 @@ This is the Backend of a School Management System built using NodeJS, MongoDB, E
 - **Advanced results middleware:** Middleware for handling advanced result processing.
 - **Develop a school management system:** A comprehensive understanding of developing a school management system.
 
-## Key Topics
-
-This project covers a wide range of topics, including:
-
-- Express.js
-- MongoDB
-- RESTful API development
-- API testing with Postman
-
 
 ## Getting Started
 
