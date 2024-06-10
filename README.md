@@ -4,7 +4,7 @@ This is the Backend of a School Management System built using NodeJS, MongoDB, E
 
 ## Application Features
 
-- **Create exams endpoints:** How to create endpoints for managing exams.
+- **Create exams endpoints:** Creating exams endpoints for managing exams.
 - **Student exams:** Enabling students to take exams and check their results.
 - **Generate exams report:** Functionality to generate exam reports.
 - **Student promotion:** Promoting a student from one class to another.
