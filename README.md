@@ -36,7 +36,7 @@ This is the Backend of a School Management System built using NodeJS, MongoDB, E
    npm install
    ```
 4. **Set up environment variables:**
-5. ```bash
+    ```bash
     Create a .env file and add the necessary configuration settings (e.g., database URL, JWT secret).
    ```
 
