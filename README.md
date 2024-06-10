@@ -1,4 +1,4 @@
-# School-Management-System API
+# School-Management-System Backend
 
 This is the Backend of a School Management System built using NodeJS, MongoDB, ExpressJS, Mongoose, and RESTful API.
 
