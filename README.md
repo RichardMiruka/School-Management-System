@@ -2,6 +2,7 @@
 
 This is the Backend of a School Management System built using NodeJS, MongoDB, ExpressJS, Mongoose, and RESTful API.
 
+
 ## Application Features
 
 - **Create exams endpoints:** Creating exams endpoints for managing exams.
